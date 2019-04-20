@@ -1,0 +1,11 @@
+{
+	"host" : "http://localhost:5000",
+	"MongoURI" : "mongodb://admin:Qwerty1234@ds153778.mlab.com:53778/chat-app-by-tab-al",
+	"sessionSecret" : "thisHashesSessionCookie",
+	"fb": {
+		"clientID": "787486501643805",
+    "clientSecret": "a0600fdac1fe8349909970aed39163b5",
+    "callbackURL": "http://localhost:3000/auth/facebook/callback",
+    "profileFields": ["id","displayName","photos","email"]
+	}
+}
