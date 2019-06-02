@@ -1,5 +1,8 @@
 const route = require('express').Router();
-var Cart = require('../controllers/cart.js');
+var Cart = require('../cart/cart.js');
+const AutModel = require('../mongo_model/automata_model.js');
+
+
 var mysql = require('mysql');
 var connection = mysql.createConnection({
   host     : 'localhost',
@@ -9,6 +12,7 @@ var connection = mysql.createConnection({
 });
 connection.connect();
 
+/*
 route.get('/:pid/:id',function(req,res){
   var groupID = req.params.pid;
   var productID = req.params.id;
@@ -44,6 +48,23 @@ route.get('/:pid/:id',function(req,res){
     res.redirect('/'+groupID+'/'+productID);
   });
 });
+*/
 
+route.get('/automata/:id', function(req,res){
+  var productID = req.params.id;
+
+  var cart = new Cart(req.session.cart ? req.session.cart : {});
+      AutModel.findById(productID, function(err, product){
+        if(err)
+        {
+          return res.redirect('/');
+        }
+        cart.add(product, product.id);
+        req.session.cart = cart;
+        console.log(req.session.cart);
+        res.redirect('/');
+      })
+  
+})
 
 exports = module.exports = route;

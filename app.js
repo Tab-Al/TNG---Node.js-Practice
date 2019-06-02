@@ -8,6 +8,7 @@ var controller2 = require( './controllers/each_product_page');
 var controller3 = require( './controllers/adminpanel');
 var validator = require('express-validator');
 const mongoose = require('mongoose');
+var MongoStore = require('connect-mongo')(session);
 
 var app = express();
 var urlencoded = bodyParser.urlencoded({extended : true});
@@ -26,6 +27,7 @@ mongoose.connect(db, { useNewUrlParser: true })
 
 
 //Connect to MySQL DB
+/*
 var mysql = require('mysql');
 var MySQLStore = require('express-mysql-session')(session);
 var connection = mysql.createConnection({
@@ -36,7 +38,7 @@ var connection = mysql.createConnection({
 });
 connection.connect();
 var sessionStore = new MySQLStore({}, connection);
-
+*/
 
 //set up template engine
 app.set('view engine', 'ejs');
@@ -44,9 +46,11 @@ app.set('view engine', 'ejs');
 
 // Express Session
 app.use(session({
-  secret: 'secret',
-  resave: false,
-  saveUninitialized: true  
+  secret : 'secret',
+  resave : false,
+  saveUninitialized: true,
+  store : new MongoStore({ mongooseConnection : mongoose.connection }),
+  cookie : { maxAge : 180*60*1000 }
 }));
 
 // Connect Flash messages

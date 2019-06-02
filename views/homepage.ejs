@@ -32,7 +32,7 @@
 	<img class="img-fluid" src="/images/extra/iphone_banner.jpg" alt="Chania">
 
 	<% include ./navbar.ejs %>
-
+	
 	<div class="container rounded" style="background-color: #000">
 		<div class="row justify-content-center">
 			<div class="col-md-3">
@@ -41,16 +41,20 @@
 		</div>
 		<div class="container">
 			<div class="card-deck">
-		  		<div class="card">
+				
+				<% autProd.forEach(function(prod){ %>
+					<div class="card">
 		    		<div class="card-body">
 		    			<img
 		    				class="card-img-top text-center"
 		    				src="/images/lap/L01.jpg">
 		    			<h4 class="card-title">Pushdown Automata</h4>
 		      			<p class="card-text">
-		      				<strong>Sub : </strong>Automata Theory<br>
-		      				<strong>Added On : </strong> 12/03/18
-		      				<strong>Added By : </strong> admin<br>
+		      				<strong>Sub : </strong> Automata Theory <br>
+		      				<strong>Topic : </strong> <%= prod.topic %><br>
+		      				<strong>Added On : </strong> <%= prod.uploaded_on %><br>
+		      				<strong>Added By : </strong> <%= prod.uploader %><br>
+		      				<strong>Downloads : </strong> <%= prod.no_of_downs %><br>
 		      				<div class="text-center">
 			      				<div class="btn-group">
 	                  				<button 
@@ -58,97 +62,18 @@
 	                  					class="btn btn-sm btn-primary">
 	                  					View This Item
 	                  				</button>
-	                  				<button 
+	                  				<a href = "/addtocart/automata/<%= prod._id %>" 
 	                  					type="button" 
 	                  					class="btn btn-sm btn-info">
-	                  					View Related
-	                  				</button>
+	                  					Add to Cart
+	                  				</a>
 	                			</div>
 	                		</div>
 		      			</p>
 		    		</div>
-		  		</div>
-		  		<div class="card">
-		    		<div class="card-body">
-		    			<img
-		    				class="card-img-top text-center"
-		    				src="/images/lap/L01.jpg">
-		    			<h4 class="card-title">Pushdown Automata</h4>
-		      			<p class="card-text">
-		      				<strong>Sub : </strong>Automata Theory<br>
-		      				<strong>Added On : </strong> 12/03/18
-		      				<strong>Added By : </strong> admin<br>
-		      				<div class="text-center">
-			      				<div class="btn-group">
-	                  				<button 
-	                  					type="button" 
-	                  					class="btn btn-sm btn-primary">
-	                  					View This Item
-	                  				</button>
-	                  				<button 
-	                  					type="button" 
-	                  					class="btn btn-sm btn-info">
-	                  					View Related
-	                  				</button>
-	                			</div>
-	                		</div>
-		      			</p>
-		    		</div>
-		  		</div>
-		  		<div class="card">
-		    		<div class="card-body">
-		    			<img
-		    				class="card-img-top text-center"
-		    				src="/images/lap/L01.jpg">
-		    			<h4 class="card-title">Pushdown Automata</h4>
-		      			<p class="card-text">
-		      				<strong>Sub : </strong>Automata Theory<br>
-		      				<strong>Added On : </strong> 12/03/18
-		      				<strong>Added By : </strong> admin<br>
-		      				<div class="text-center">
-			      				<div class="btn-group">
-	                  				<button 
-	                  					type="button" 
-	                  					class="btn btn-sm btn-primary">
-	                  					View This Item
-	                  				</button>
-	                  				<button 
-	                  					type="button" 
-	                  					class="btn btn-sm btn-info">
-	                  					View Related
-	                  				</button>
-	                			</div>
-	                		</div>
-		      			</p>
-		    		</div>
-		  		</div>
-		  		<div class="card">
-		    		<div class="card-body">
-		    			<img
-		    				class="card-img-top text-center"
-		    				src="/images/lap/L01.jpg">
-		    			<h4 class="card-title">Pushdown Automata</h4>
-		      			<p class="card-text">
-		      				<strong>Sub : </strong>Automata Theory<br>
-		      				<strong>Added On : </strong> 12/03/18
-		      				<strong>Added By : </strong> admin<br>
-		      				<div class="text-center">
-			      				<div class="btn-group">
-	                  				<button 
-	                  					type="button" 
-	                  					class="btn btn-sm btn-primary">
-	                  					View This Item
-	                  				</button>
-	                  				<button 
-	                  					type="button" 
-	                  					class="btn btn-sm btn-info">
-	                  					View Related
-	                  				</button>
-	                			</div>
-	                		</div>
-		      			</p>
-		    		</div>
-		  		</div>
+		  			</div>
+				<% });%>
+
 			</div>	
 		</div>
 		<br>
