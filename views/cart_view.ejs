@@ -1,15 +1,85 @@
 <html>
 <head>
 	<title>Shopping Cart</title>
-	<link rel="stylesheet" href="/css/cart.css">
-	<link rel="stylesheet" href="/css/welcomepage.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="/css/bootstrap.min.css" 
+    rel="stylesheet" 
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous">
+  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    rel="stylesheet">
+
+  <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" 
+    rel="stylesheet" 
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" 
+    crossorigin="anonymous">
+
+  <link href="/css/footer.css" rel="stylesheet">
+  
+  <script src="/js/bootstrap.min.js">
+  </script>
 </head>
 
-<body background="/images/bkg/red.jpg" style="margin-left: 60px; margin-right: 60px; margin-top: 30px;">
+<body class="bg-light">
 
-<% include ./navbar.ejs %>
+  <% include ./header.ejs %>
+  <br><br><br>
+  <% include ./navbar.ejs %>
+  <br><br><br>
+  <div class="container bg-dark">
+    <div class="row">
+      <br><br><br>
+      <h4 class="display-4 ml-5 mt-3 text-success">Your Cart : </h4>
+    </div>
+      
+    <div class="row m-3">  
+      <div class="col-sm-8">
+        <ul class="list-group">
+          <% products.forEach(function(prod){ %>
+            <li class="list-group-item">
+              <h5>
+              Title : <%=prod.item.topic%>
+              <br>
+              Qty : <%=prod.qty%>
+              <div class="text-right">
+                <a href="#" class="btn btn-info" role="button">Remove Item</a>
+              </div>
+              </h5>            
+            </li>
+          <% }) %>
+          <br><br>
+        </ul>
+      </div>
+      <div class="col-sm-4">
+        <ul class="list-group">
+          <li class="list-group-item">
+            Total Quantity : <%=totalQty%>
+          </li>
+          <li class="list-group-item">
+            Total Price : <%=totalPrice%>
+          </li>
+          <li class="list-group-item">
+            Delivery Charges : <del>Rs. 100</del> FREE
+          </li>
+          <li class="list-group-item">
+            Delivery In : 3-5 Working Days
+          </li>
+          <li class="list-group-item">
+            <div class="text-right">
+              <a href="#" class="btn btn-danger" role="button">Checkout</a>
+            </div>
+          </li>
+        </ul>
+      </div>
 
+    </div>
+  </div>
+
+
+
+
+
+<!--
 <div class="main_box">
   <div class="item" style="font-size: 40px; padding: 5px 100px;">
     <p>Your Cart :</p>
@@ -36,3 +106,5 @@
 <script src="/js/js.js"></script>
 </body>
 </html>
+
+-->

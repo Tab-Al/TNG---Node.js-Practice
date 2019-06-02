@@ -62,7 +62,9 @@ route.get('/automata/:id', function(req,res){
         cart.add(product, product.id);
         req.session.cart = cart;
         console.log(req.session.cart);
-        res.redirect('/');
+        setTimeout(function () {
+          res.redirect('/'); 
+        }, 2000); 
       })
   
 })

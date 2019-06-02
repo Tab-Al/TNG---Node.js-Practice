@@ -1,5 +1,5 @@
 const route = require('express').Router();
-var Cart = require('../controllers/cart.js');
+var Cart = require('../cart/cart.js');
 
 route.get('/',function(req,res){
   console.log("User Viewing Cart");
@@ -9,7 +9,7 @@ route.get('/',function(req,res){
   }
   var cart = new Cart(req.session.cart);
 
-  res.render('cart_view', {products: cart.generatearray(), totalPrice: cart.totalPrice, totalQty: cart.totalQty});
+  res.render('cart_view', {products: cart.generateArray(), totalPrice: cart.totalPrice, totalQty: cart.totalQty});
 
 });
 
